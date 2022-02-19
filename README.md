@@ -1,3 +1,8 @@
+# Detailed running instructions
+https://gist.github.com/arblitroshani/2d81778ad52c279736b135304fe2af4b
+
+February 18, 2022: This repository contains minimal dependency updates and fixes to run the project. 
+
 # DEATH NOTICE
 May 8, 2020: I have abandoned this project and will not update it. If someone else wants to take it over please contact me.
 
