@@ -67,7 +67,7 @@ contract basicInfoGetter {
     return msg.sender;
   }
 
-  function getContractAddress() public view returns (address) {
+  function getContractAddressSelf() public view returns (address) {
     return this;
   }
 

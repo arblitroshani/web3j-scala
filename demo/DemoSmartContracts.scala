@@ -36,8 +36,8 @@ class DemoSmartContracts(demo: Demo) {
     // val contract2 = YourSmartContract.load( "0x<address>", web3j, credentials, gasPrice, gasLimit)
 
     // Transact with a smart contract
-//    val result = basicInfoGetter.send().getContractAddress.send()
-//    println(s"basicInfoGetter.getContractAddress = $result")
+    val result = basicInfoGetter.send().getContractAddressSelf.send()
+    println(s"basicInfoGetter.getContractAddress = $result")
   } catch {
     case e: Throwable =>
       System.err.println(e.getMessage)
