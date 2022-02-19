@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.web3j</groupId>
   <artifactId>core</artifactId>
-  <version>4.5.16</version>
+  <version>4.5.17</version>
   <name>web3j</name>
   <description>web3j is a lightweight Java library for integration with Ethereum clients</description>
   <url>https://web3j.io</url>
@@ -35,19 +35,19 @@
     <dependency>
       <groupId>org.web3j</groupId>
       <artifactId>abi</artifactId>
-      <version>4.5.16</version>
+      <version>4.5.17</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.web3j</groupId>
       <artifactId>crypto</artifactId>
-      <version>4.5.16</version>
+      <version>4.5.17</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.web3j</groupId>
       <artifactId>tuples</artifactId>
-      <version>4.5.16</version>
+      <version>4.5.17</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

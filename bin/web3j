@@ -37,4 +37,4 @@ if [ "$1" == -j ] || [ ! -f "${JAR}" ]; then
   if [ "$1" == -j ]; then shift; fi
 fi
 
-java -cp "$JAR" org.web3j.console.Runner "$@"
+java -cp target/scala-2.13/web3j-scala-assembly-4.5.17.jar org.web3j.console.Runner "$@"

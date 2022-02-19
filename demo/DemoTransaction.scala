@@ -17,17 +17,18 @@ class DemoTransaction(demo: Demo) {
   import Demo._, demo._
 
   //  Send Ether to another party using your Ethereum wallet file
-  val credentials: Credentials = WalletUtils.loadCredentials("password", walletDir)
+  val credentials: Credentials = WalletUtils.loadCredentials("password", walletFile)
+  val toAddress: String = "0x7299192CD862c9c5345cC47a2Ef24807436009b0"
   val transactionReceipt: TransactionReceipt =
-    Transfer.sendFunds(web3j, credentials, "0x...", BigDecimal.valueOf(0.01).bigDecimal, ETHER).send
+    Transfer.sendFunds(web3j, credentials, toAddress, BigDecimal.valueOf(0.0005).bigDecimal, ETHER).send
   println(format(transactionReceipt))
 
   // Before creating a custom transaction, first get the next available nonce
-  val nonce: Nonce = demo.web3jScala.sync.nextNonce(Address("address"))
+  val nonce: Nonce = demo.web3jScala.sync.nextNonce(Address(toAddress))
 
   // Create a custom transaction
   val rawTransaction: RawTransaction =
-    RawTransaction.createEtherTransaction(nonce.bigInteger, gasPrice.bigInteger, gasLimit, "toAddress", BigInt(1).bigInteger)
+    RawTransaction.createEtherTransaction(nonce.bigInteger, gasPrice.bigInteger, gasLimit, toAddress, BigInt(1).bigInteger)
   println(format(rawTransaction))
 
   // Sign & send the transaction
@@ -37,7 +38,7 @@ class DemoTransaction(demo: Demo) {
 
   // Now let's transfer some funds. Be sure a wallet is available in the client’s keystore. TODO how?
   // One option is to use web3j’s `Transfer` class for transacting with Ether.
-  Transfer.sendFunds(web3j, credentials, "toAddress", BigDecimal(1).bigDecimal, WEI)
+  Transfer.sendFunds(web3j, credentials, toAddress, BigDecimal(1).bigDecimal, WEI)
 
   // Here is how to use the Ethereum client’s admin commands:
   val web3jAdmin: Admin = Admin.build(new HttpService)

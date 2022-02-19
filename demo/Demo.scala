@@ -15,9 +15,11 @@ object Demo {
 
   val walletDir: String = Cmd.home(
     if (isWindows) s"${ sys.props("user.home") }\\AppData\\Roaming\\Ethereum\\"
-    else if (isMac) "~/Library/Ethereum/"
-    else "~/.ethereum/"
+    else if (isMac) "~/Library/Ethereum/rinkeby/"
+    else "~/.ethereum/rinkeby/"
   )
+
+  val walletFile: String = walletDir + "keystore/UTC--2022-02-16T20-33-01.238251000Z--803017d9fc99d965c1d8adc4717ba1d97cb3a103"
 }
 
 class Demo(implicit ec: ExecutionContext) {
@@ -57,7 +59,7 @@ class Demo(implicit ec: ExecutionContext) {
     if (isWindows) "~/AppData/Roaming/Ethereum"
     else if (isMac) "~/Library/Ethereum/"
     else "~/.ethereum/"
-  ) + "devnet/" // todo discover the ethereum name at runtime
+  ) + "rinkeby/" // todo discover the ethereum name at runtime
 
   // Web3J supports fast inter-process communication (IPC) via file sockets to clients running on the same host as Web3J.
   // To connect simply use the relevant IpcService implementation instead of HttpService when you create your service:

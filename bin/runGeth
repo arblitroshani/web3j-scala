@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ETHEREUM_HOME="${HOME}/.ethereum"
+ETHEREUM_HOME="~/Library/Ethereum"
 
 function help {
   echo "
@@ -93,11 +93,12 @@ geth \
   ${DATADIR} \
   --ipcpath geth.ipc \
   --metrics \
-  --rpc \
-  --rpcapi $APIS \
-  --shh \
+  --http \
+  --http.api $APIS \
   --ws \
-  --wsapi $APIS \
+  --ws.api $APIS \
+  --allow-insecure-unlock \
+  --rpc.allow-unprotected-txs \
   --verbosity 3 \
-  "$*" 2> logs/geth.log
+  2> logs/geth.log
 set +xv

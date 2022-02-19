@@ -3,11 +3,10 @@
 # Discover the geth APIs provided by invoking the modules JSON-RPC method
 # See https://github.com/ethereum/go-ethereum/wiki/Management-APIs
 
-network="${1:-devnet}"
-
-echo '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}' | \
-  nc -NU ${HOME}/.ethereum/${network}/geth.ipc | \
-  python -m json.tool
+curl -X POST \
+  -d '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}' \
+  -H 'Content-type: application/json' \
+  http://127.0.0.1:8545
 
 # Typical response:
 # {
@@ -22,7 +21,6 @@ echo '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}' | \
 #        "net":"1.0",
 #        "personal":"1.0",
 #        "rpc":"1.0",
-#        "shh":"1.0",
 #        "txpool":"1.0",
 #        "web3":"1.0"
 #     }

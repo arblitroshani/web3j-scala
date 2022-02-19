@@ -76,7 +76,9 @@ object Web3JScala {
     outputDirectory: String = "abiWrapper/"
   ): String = cmd.getOutputFrom(
     "bin/web3j", "solidity",
-      "generate", s"$inputDirectory/${ toCamelCase(filename) }.bin", s"$inputDirectory/${ toCamelCase(filename) }.abi",
+      "generate",
+      "-b", s"$inputDirectory/${ toCamelCase(filename) }.bin",
+      "-a", s"$inputDirectory/${ toCamelCase(filename) }.abi",
       "-o", outputDirectory,
       "-p", packageName
   )
