@@ -3,15 +3,17 @@ package demo
 import java.math.BigInteger
 import com.micronautics.web3j.{Cmd, Ether, EthereumSynchronous, Web3JScala}
 import Cmd.{isMac, isWindows}
+import org.web3j.crypto.{Credentials, WalletUtils}
 import org.web3j.protocol.Web3j
 import org.web3j.protocol.ipc.{UnixIpcService, WindowsIpcService}
+
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Promise}
 import org.web3j.protocol.core.DefaultBlockParameterName._
 
 object Demo {
-  val gasPrice: Ether = Ether(1)
-  val gasLimit: BigInteger = BigInt(2).bigInteger
+  val gasPrice: Ether = Ether(41000000)
+  val gasLimit: BigInteger = BigInt(5000000).bigInteger
 
   val walletDir: String = Cmd.home(
     if (isWindows) s"${ sys.props("user.home") }\\AppData\\Roaming\\Ethereum\\"
@@ -20,6 +22,8 @@ object Demo {
   )
 
   val walletFile: String = walletDir + "keystore/UTC--2022-02-16T20-33-01.238251000Z--803017d9fc99d965c1d8adc4717ba1d97cb3a103"
+
+  val credentials: Credentials = WalletUtils.loadCredentials("password", walletFile)
 }
 
 class Demo(implicit ec: ExecutionContext) {
